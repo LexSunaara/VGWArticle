@@ -8,6 +8,7 @@
 \begin{document}
 
 \title{Generation of viscous gravity waves by a moving boundary}
+\author{A. Renaud and A. Venaille}
 \maketitle
 
 \section{Introduction}
@@ -55,7 +56,7 @@ where $\left(x,z\right)$ are the zonal and vertical coordinates, $\Delta=\partia
 The domain is periodic in the zonal direction. For any field $\phi\left(x,z\right)$, we have $\phi\left(x+nL\right)=\phi\left(x\right)$ $\forall\left(x,n\right)\in\mathbb{R}\times\mathbb{Z}$. $L$ is the zonal period of the domain. At the boundary at the bottom of the domain will be referred to as topography. Its equation is given by $z\left(x,t\right)=h_{b}\left(x,t\right)$ with $\int_{0}^{L}h_{b}\left(x,t\right)\mathrm{d}x=0$. 
 
 If $\nu=0$, we consider simply the impermeability condition at the bottom boundary. It amounts to fixe the normal velocity at the boundary to be equal to the normal velocity of the topography :
-\begin{eqution}
+\begin{equation}
 	\left(\mathbf{u}\left(x,z=h_{b}\left(x,t\right)\right)-\mathbf{v}_{h_{b}}\left(x,t\right)\right)\cdot\mathbf{n}_{h_{b}}\left(x,t\right)=0\;\forall x,t
 \end{equation}
 
@@ -119,7 +120,7 @@ Let us write down the bottom boundary conditions :
 	\left(\partial_{z}u+\partial_{x}w\right)\frac{\left(1-\left(\epsilon\partial_{x}h_{b}\right)^{2}\right)}{2}-\epsilon\partial_{x}h_{b}\left(\partial_{x}u-\partial_{z}w\right)=0|_{z=\epsilon h_{b}}
 \end{equation}
 
-\paragraph{No-slip : Cancelation of the velocity
+\paragraph{No-slip : Cancelation of the velocity}
 \begin{equation}
 	\mathbf{u}|_{z=\epsilon h_{b}}=\mathbf{v}_{h_{b}}
 \end{equation}
@@ -136,7 +137,7 @@ where $\phi$ is any field. We define the waves-mean flow decomposition by
 \end{equation}
 the fields $\left(\overline{u},\overline{w},\overline{b},\overline{P}\right)$ will be referred to as the mean\textendash flow and the fields $\left(u',w',b',P'\right)$ as the waves. 
 
-We can notice that if there is no Newtonian cooling (i.e. $\beta=0$), then the mass distribution is conserved and, thus, the mass field as to be a rearrangement of the initial mass field. If we assume this initial field to by linear then $\overline{b}+b'=N^{2}\zeta\left(x,z,t\right)$ where $\zeta$ is a vertical displacement field. From incompressibility, we have $\overline{\zeta}=0$. This means that the mean buoyancy is zero at any time. For a non linear initial stratification\t$S_{bg}\left(z\right)$, $\overline{b}$ will be given by a series $\sum_{k=2}^{\infty}S_{bg}^{\left(k\right)}\left(z\right)\overline{\zeta^{k}}/k!$ which is bounded by the amplitude of the fluctuations. 
+We can notice that if there is no Newtonian cooling (i.e. $\beta=0$), then the mass distribution is conserved and, thus, the mass field as to be a rearrangement of the initial mass field. If we assume this initial field to by linear then $\overline{b}+b'=N^{2}\zeta\left(x,z,t\right)$ where $\zeta$ is a vertical displacement field. From incompressibility, we have $\overline{\zeta}=0$. This means that the mean buoyancy is zero at any time. For a non linear initial stratification $S_{bg}\left(z\right)$, $\overline{b}$ will be given by a series $\sum_{k=2}^{\infty}S_{bg}^{\left(k\right)}\left(z\right)\overline{\zeta^{k}}/k!$ which is bounded by the amplitude of the fluctuations. 
 
 The coupled waves-mean flow equations are given by simply applying the zonal average to\textbf{ (\ref{eq:GlobalEQ_NonLin}) }and using the zonal periodicity :
 \begin{equation}
@@ -181,7 +182,7 @@ We consider here a single topographic mode $k=\pm1$ and a single phase speed $c=
 \end{equation}
 
 
-\paragraph{No-slip : Cancelation of the velocity
+\paragraph{No-slip : Cancelation of the velocity}
 \begin{equation}
 	\sum_{n=1}^{\infty}\epsilon^{n}h_{b}^{n}\partial_{z}^{n}\mathbf{u}=\mathbf{v}_{h_{b}}.
 \end{equation}
@@ -301,7 +302,7 @@ The vertical group velocity is defined by :
 \begin{equation}
 	w_{g}\equiv\frac{k}{\partial_{c}\mathbb{Re}\left[m\right]}\protect\underset{\beta\to0}{\sim}\mp\frac{km_{0}}{k^{2}+m_{0}^{2}}\left(c-\overline{u}\right)
 \end{equation}
-}
+
 
 \subsection{Case $\beta=0$ and $\mathrm{Re}<\infty$ :}
 
@@ -347,6 +348,6 @@ This an 4th\-- order equation. There is two branches for $m$. A propagative one 
 	\end{equation}
 \end{itemize}
 \bibliographystyle{plain}
-\bibliography{Biblio/Bibliographie}
+\bibliography{Bibliographie}
 
 \end{document}
