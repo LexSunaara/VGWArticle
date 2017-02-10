@@ -62,9 +62,9 @@ Plan du papier :
 We consider a stratified fluid within a  2\--dimensional domain periodic in the horizontal $x$\--direction (this direction will be referred to as ``zonal'' in the remaining of the paper) and semi-infinite in the vertical $z$\--direction. We consider the incompressible Boussinesq model. Two types of dissipative mechanism will be considered: viscosity and Newtonian cooling. The equation of state is linear. The bottom boundary is an undulating line located on average at $z=0$. We are interested in the dynamics of the buoyancy anomaly defined by $b=g\frac{\left(\rho_{c}-\rho\right)}{\rho_{c}}-\int^{z}N^{2}$ where $\rho_{c}$ is a reference value for the density field $\rho$ and $N$ is the Brünt-Väisälä frequency (height\--dependent in general and always positive such that the rest state, $b=0$, is stable). The parameters of the problem are the characteristic amplitude, wave number and angular momentum of the bottom boundary undulation $\left(h_{b},k,\omega\right)$, the kinematic viscosity $\nu$ and the bottom value of the Brünt\--Väisälä frequency $N_{0}=N\left(z=0\right)$. We denote $c=\omega/k$ the associated phase\--speed. We can define three independent dimensionless parameters:
 \begin{equation}
 	\begin{cases}
-		\text{Reynold number :} 			& \mathrm{Re}=\frac{c}{\nu k}\\
-		\text{Froude number : } 			& \mathrm{Fr}=\frac{\omega}{N_{0}}\\
-		\text{Bottom boundary mean slope :}	& \epsilon=h_{b}k
+		\text{Reynold number :} 				& \mathrm{Re}=\frac{c}{\nu k}\\
+		\text{Froude number : } 				& \mathrm{Fr}=\frac{\omega}{N_{0}}\\
+		\text{Bottom boundary aspect ratio :}	& \epsilon=h_{b}k
 	\end{cases}.
 \end{equation}
 
@@ -75,7 +75,7 @@ The flow obeys the primitive equations in the Boussinesq approximation. In the a
 	\begin{cases}
 		\partial_{t}u+u\partial_{x}u+w\partial_{z}u 	& =-\partial_{x}P+\frac{1}{\mathrm{Re}}\Delta u\\
 		\partial_{t}w+u\partial_{x}w+w\partial_{z}w 	& =-\partial_{z}P+\frac{1}{\mathrm{Fr}^{2}}b+\frac{1}{\mathrm{Re}}\Delta w\\
-		\partial_{t}b+u\partial_{x}b+w\partial_{z}b+n\left(z\right)w 	& =-\alpha b\\
+		\partial_{t}b+u\partial_{x}b+w\partial_{z}b+n^{2}\left(z\right)w 	& =-\alpha b\\
 		\partial_{x}u+\partial_{z}w 					& =0
 	\end{cases}\label{eq:GlobalEQ_NonLin}
 \end{equation}
@@ -129,8 +129,8 @@ The important term is the Reynold stress $\partial_{z}\overline{u'w'}$. The wave
 		\partial_{t}u'+\overline{u}\partial_{x}u'+w'\partial_{z}\overline{u}+\mathcal{B}\left(\mathbf{u}',u'\right)	& =-\partial_{x}P'+\frac{1}{\mathrm{Re}}\Delta u'\\
 		\partial_{t}w'+\overline{u}\partial_{x}w'+\mathcal{B}\left(\mathbf{u}',w'\right) 							& =-\partial_{z}P'+\frac{1}{\mathrm{Fr}^{2}}b'+\frac{1}{\mathrm{Re}}\Delta w'\\
 		\partial_{x}u'+\partial_{z}w' 																				& =0\\
-		\partial_{t}b'+\overline{u}\partial_{x}b''+w'+\mathcal{B}\left(\mathbf{u}',b'\right)						& =-\beta b'
-	\end{cases}
+		\partial_{t}b'+\overline{u}\partial_{x}b''+n^{2}\left(z\right)w'+\mathcal{B}\left(\mathbf{u}',b'\right)						& =-\alpha b'
+	\end{cases}\label{eq:GlobalFluct}
 \end{equation}
 where $\mathcal{B}\left(\mathbf{u}',\phi'\right)=u'\partial_{x}\phi'+w'\partial_{z}\phi'-\overline{u'\partial_{x}\phi'+w'\partial_{z}\phi}$ is a bilinear operator with zero zonal average.
 
@@ -140,28 +140,24 @@ In principle, we perform the same flow decomposition at the boundaries in order 
 
 We consider here a single topographic mode $k=\pm1$ and a single phase speed $c=\pm1$. We consider the limit a small topographic aspect ratio (i.e. $\epsilon\ll1$). In this limit we can consider an asymptotically square domain with a bottom boundary condition expressed at $z=0$ in terms of a series of power of $\epsilon$:
 \begin{itemize}
-	\item Impermeability
+	\item Inviscid impermeability condition
 	\begin{equation}
-		\sum_{n=2}^{\infty}\epsilon^{n}h_{b}^{n-1}\left(h_{b}\partial_{z}^{n}w-\partial_{x}h_{b}\partial_{z}^{n-1}u\right)+w-v_{z,h_{b}}+\epsilon\left(h_{b}\partial_{z}w-\left(u-u_{x,h_{B}}\right)\partial_{x}h_{b}|_{z=\epsilon h_{b}}\right)=0.
+		w-w_{h_{b}}+\epsilon\left(h_{b}\partial_{z}w-(u-u_{h_{b}}\right)\partial_{x}h_{b})=o\left(\epsilon\right)
 	\end{equation}
-	\item Viscous boundary conditions :
+	\item Viscous boundary conditions :\\
+	\textbf{Free-slip}
+	\begin{equation}
+		\partial_{z}u+\partial_{x}w+\epsilon\left(h_{b}\left(\partial_{zz}u+\partial_{xz}w \right)-2\partial_{x}h_{b}\left(\partial_{x}u-\partial_{z}w\right)\right)=o\left(\epsilon\right)
+	\end{equation} \\
+	\textbf{No-slip}
+	\begin{equation}
+		\left(u,w\right)-\left(u_{h_{b}},w_{h_{b}}\right)+\epsilon h_{b}\left(\partial_{z}u,\partial_{z}w\right)=o\left(\epsilon\right)
+	\end{equation}
 \end{itemize}
 
-\paragraph{Free-slip : No tangential constraint}
-\begin{equation}
-	\sum_{n=2}^{\infty}\epsilon^{n}\left(\frac{h_{b}^{n}}{2}\left(\partial_{z}^{n+1}u+\partial_{x}\partial_{z}^{n}w\right)-\frac{\partial_{x}\left(h_{b}^{n-1}\right)\partial_{x}h_{b}}{2\left(n-1\right)}\left(\partial_{z}^{n-1}u+\partial_{x}\partial_{z}^{n-2}w\right)-\frac{\partial_{x}\left(h_{b}^{n}\right)}{n}\left(\partial_{x}\partial_{z}^{n-1}u-\partial_{z}^{n+1}w\right)\right)+\epsilon\left(\frac{h_{b}}{2}\left(\partial_{zz}u+\partial_{zx}w\right)-\partial_{x}h_{b}\left(\partial_{x}u-\partial_{z}w\right)\right)+\frac{1}{2}\left(\partial_{z}u+\partial_{x}w\right)=0.
-\end{equation}
+Let us introduce a small parameter $\epsilon^{2}\ll a\ll1$. We will see later how it scales with $\epsilon$. Let us introduce a slow variable $Z=az$. We now assume that the mean flow $\overline{u}$ depends only on $Z$ in Eq. (\ref{eq:GlobalFluct}), we assume the same for $n$. For the wave field, this means that the mean flow appears weakly sheared and frozen in time. We will see later under which condition this hypothesis holds.
 
-
-\paragraph{No-slip : Cancelation of the velocity}
-\begin{equation}
-	\sum_{n=1}^{\infty}\epsilon^{n}h_{b}^{n}\partial_{z}^{n}\mathbf{u}=\mathbf{v}_{h_{b}}.
-\end{equation}
-
-
-Let us introduce a small parameter $\epsilon^{2}\ll a\ll1$. We will see later how it scales with $\epsilon$. Let us introduce a slow variable $Z=az$. We now assume that the mean flow $\overline{u}$ depend only on $Z$. This mean that for the wave field, the mean flow appears weakly sheared and frozen in time.
-
-Let us introduce the following WKB expansion of a stationary solution of the wave-equation
+Let us introduce the WKB expansion of a stationary solution of the wave equation (\ref{eq:GlobalFluct}) :
 \begin{equation}
 	\left[
 	\begin{array}{c}
@@ -170,7 +166,7 @@ Let us introduce the following WKB expansion of a stationary solution of the wav
 		b'\\
 		p'
 	\end{array}
-	\right] = \epsilon\sum_{j=0}^{+\infty}a^{j}\mathbb{R}\mathrm{e}\left\{ \left[
+	\right] = \epsilon\mathbb{R}\mathrm{e}\left\{\sum_{j=0}^{+\infty}a^{j} \left[
 	\begin{array}{c}
 		\tilde{u}{}_{j}\left(Z\right)\\
 		\tilde{w}{}_{j}\left(Z\right)\\
@@ -179,7 +175,7 @@ Let us introduce the following WKB expansion of a stationary solution of the wav
 	\end{array}
 	\right]\exp\left(ik\left(ct-x\right)-\frac{i\Phi\left(Z\right)}{a}\right)\right\} .
 \end{equation}
-Injecting this expansion into the previous equation and collecting the leading order in $a$ leads :
+The wave amplitude is scaling with the bottom boundary aspect ratio $\epsilon$. $\Phi\left(Z\right)$ is the phase of the wave. Injecting this expansion into the previous equation and collecting the leading order in $a$ and $\epsilon$ leads :
 \begin{equation}
 	\epsilon\boldsymbol{\mathrm{M}}\left[
 	\begin{array}{c}
@@ -210,14 +206,18 @@ with
 	\begin{array}{cccc}
 		ik\left(c-\overline{u}\right)\left(1-i\frac{k^{2}+m^{2}}{\mathrm{Re}k\left(c-\overline{u}\right)}\right) & 0 & 0 & -ik\\
 		0 & ik\left(c-\overline{u}\right)\left(1-i\frac{k^{2}+m^{2}}{\mathrm{Re}k\left(c-\overline{u}\right)}\right) & -\frac{1}{\mathrm{Fr}^{2}} & -im\\
-		0 & 1 & ik\left(c-\overline{u}\right)\left(1-i\frac{\beta}{k\left(c-\overline{u}\right)}\right) & 0\\
+		0 & n^{2} & ik\left(c-\overline{u}\right)\left(1-i\frac{\alpha}{k\left(c-\overline{u}\right)}\right) & 0\\
 		-ik & -im & 0 & 0
 	\end{array}
 	\right]\qquad\text{ and }m=\partial_{Z}\phi
 \end{equation}
 This implies 
 \begin{equation}
-	\det\boldsymbol{\mathrm{M}}=0\implies\mathrm{Fr}^{2}\left(c-\overline{u}\right)^{2}\left(1-i\frac{\left(k^{2}+m^{2}\right)}{\mathrm{Re}k\left(c-\overline{u}\right)}\right)\left(1-i\frac{\beta}{k\left(c-\overline{u}\right)}\right)\left(k^{2}+m^{2}\right)=1\qquad\text{ and }\qquad\left[
+	\det\boldsymbol{\mathrm{M}}=0\implies\mathrm{Fr}^{2}\left(c-\overline{u}\right)^{2}\left(1-i\frac{\left(k^{2}+m^{2}\right)}{\mathrm{Re}k\left(c-\overline{u}\right)}\right)\left(1-i\frac{\alpha}{k\left(c-\overline{u}\right)}\right)\left(k^{2}+m^{2}\right)=n^{2}  \label{eq:GeneralDisp}
+\end{equation}
+and
+\begin{equation}
+	\left[
 	\begin{array}{c}
 		\tilde{u}{}_{0}\\
 		\tilde{w}{}_{0}\\
@@ -232,92 +232,99 @@ where $\tilde{\phi}_{0}$ measures the global amplitude of the wave and $\boldsym
 		\begin{array}{c}
 			c-\overline{u}\\
 			-{\displaystyle \frac{k}{m}}\left(c-\overline{u}\right)\\
-			{\displaystyle -\frac{i}{m\left(1-i\frac{\beta}{k\left(c-\overline{u}\right)}\right)}}\\
+			{\displaystyle -\frac{i}{m\left(1-i\frac{\alpha}{k\left(c-\overline{u}\right)}\right)}}\\
 			\left(c-\overline{u}\right)^{2}\left(1-i\frac{\left(k^{2}+m^{2}\right)}{\mathrm{Re}k\left(c-\overline{u}\right)}\right)
 		\end{array}
 	\right].
 \end{equation}
-We now project the order one terms on
+ The equation (\ref{eq:GeneralDisp}) is the dispersion relation equation of the wave which as to be satisfied locally. For every value of $Z$, it gives $m\left(Z\right)$. This equation has multiple solution. Depending on the type of wave we want to study, we consider one of the value. The complete linear solution of the problem is a linear combination of all the solution satisfying the boundary conditions. 
+
+ To get an evolution equation for $\phi_{0}$, we project the order one terms on
 \begin{equation}
 	\left[
 	\begin{array}{c}
 		c-\overline{u}\\
 		-{\displaystyle \frac{k}{m}}\left(c-\overline{u}\right)\\
-		{\displaystyle \frac{i}{\mathrm{Fr}^{2}m\left(1-i\frac{\beta}{k\left(c-\overline{u}\right)}\right)}}\\
+		{\displaystyle \frac{i n^{2}}{\mathrm{Fr}^{2}m\left(1-i\frac{\alpha}{k\left(c-\overline{u}\right)}\right)}}\\
 		\left(c-\overline{u}\right)^{2}\left(1-i\frac{\left(k^{2}+m^{2}\right)}{\mathrm{Re}k\left(c-\overline{u}\right)}\right)
 	\end{array}
 	\right].
 \end{equation}
-This leads toward a messy equation for the wave\--amplitude $\phi_{0}\left(Z\right)$ :
+This cancel out the order one terms of the wave and leave us with an equation for the amplitude of the zero\--th order wave $\phi_{0}\left(Z\right)$ :
 \begin{equation}
-	\frac{1}{\phi_{0}\left(c-\overline{u}\right)}\partial_{Z}\left(\phi_{0}\left(c-\overline{u}\right)\right)=\frac{2\left(k^{2}-m^{2}\right)+ik\mathrm{Re}\left(c-\overline{u}\right)}{4m^{2}\left(2\left(k^{2}+m^{2}\right)+ik\mathrm{Re}\left(c-\overline{u}\right)\right)}\partial_{Z}m^{2}
+	\frac{1}{\phi_{0}\left(c-\overline{u}\right)}\partial_{Z}\left(\phi_{0}\left(c-\overline{u}\right)\right)=\frac{2\left(k^{2}-m^{2}\right)+ik\mathrm{Re}\left(c-\overline{u}\right)}{4m^{2}\left(2\left(k^{2}+m^{2}\right)+ik\mathrm{Re}\left(c-\overline{u}\right)\right)}\partial_{Z}m^{2}.\label{eq:AmpEQGEN}
+\end{equation}
+ This last equation has to be solved for every solution $m\left(Z\right)$ of the dispersion relation (\ref{eq:GeneralDisp}).
+
+
+\subsection{Dispersion relation for $\mathrm{Re=\infty}$ and $\alpha>0$:}
+
+Without viscous dissipation, the linear wave obeys the following dispersion relation locally :
+\begin{equation}
+	\mathrm{Fr}^{2}\left(c-\overline{u}\right)^{2}\left(1-i\frac{\alpha}{k\left(c-\overline{u}\right)}\right)\left(k^{2}+m^{2}\right)=n^{2}.
+\end{equation}
+This is an 2nd-order equation. There is only one propagative branch for $m$ . In the limit of $\alpha\ll1$, we have :
+\begin{equation}
+	m=\pm\left(m_{0}+i\frac{\alpha n^{2}}{2 k\left(c-\overline{u}\right)^{3}\mathrm{Fr}^{2}m_{0}}\right)+o\left(\alpha\right)
+\end{equation}
+where 
+\begin{equation}
+ 	m_{0}=\sqrt{\frac{n^{2}}{\left(c-\overline{u}\right)^{2}\mathrm{Fr}^{2}}-k^{2}}.
+\end{equation}
+is the positive inviscid solution for a purely propagating unattenuated wave. We assume that the wave remains propagating such that $\left(c-\overline{u}\right)^2 \mathrm{Fr}^2 k^2 <n^{2}$ is always verified. The sign depend on the direction of propagation of the considered wave. We can extract an attenuation length scale for the wave : 
+\begin{equation}
+	L_{\alpha}=\frac{2\left|k\right|\left|c-\overline{u}\right|^{3}\mathrm{Fr}^2 m_{0}}{\alpha n^{2}}.
 \end{equation}
 
-
-\subsection{Case $\mathrm{Re=\infty}$ and $\beta>0$:}
-
-We have 
+The definition of the vertical group velocity of an inviscid wave is naturally defined by $w_{g}=-k/\partial_{c}m_{0}$. We extend this definition to attenuated waves : 
 \begin{equation}
-	\mathrm{Fr}^{2}\left(c-\overline{u}\right)^{2}\left(1-i\frac{\beta}{k\left(c-\overline{u}\right)}\right)\left(k^{2}+m^{2}\right)=1.
+	w_{g}\equiv\frac{k}{\partial_{c}\mathbb{Re}\left[m\right]}.
 \end{equation}
-This is an 2nd-order equation. There is only one propagative branch for $m$ . In the limit of $\beta\ll1$, we have :
+In the limit $\alpha\ll1$, it leads to the inviscid group velocity : 
 \begin{equation}
-	m=\pm\left(\underbrace{\sqrt{\frac{1}{\left(c-\overline{u}\right)^{2}\mathrm{Fr}^{2}}-k^{2}}}_{m_{0}}+i\frac{\beta}{2\left(c-\overline{u}\right)^{3}\mathrm{Fr}^{2}\sqrt{\frac{1}{\left(c-\overline{u}\right)^{2}\mathrm{Fr}}-k^{2}}}\right).
+w_{g}=\mp\frac{km_{0}}{k^{2}+m_{0}^{2}}\left(c-\overline{u}\right)+o\left(\alpha\right).
 \end{equation}
-In the limit $\beta\ll1$, we also have :
+The expression of the group velocity will be useful later to compare the time scale of evolution of the mean flow with the time scale of the propagation of the wave.
+
+We can now consider back the equation for amplitude of the wave (\ref{eq:AmpEQGEN}) in the limit $\alpha\ll1$. It simplifies into :
 
 \begin{equation}
-	\partial_{Z}\left(\frac{\phi_{0}^{2}\left(c-\overline{u}\right)^{2}}{\sqrt{\frac{1}{\left(c-\overline{u}\right)^{2}\mathrm{Fr}^{2}}-k^{2}}}\right)=0.
-\end{equation}
-The vertical group velocity is defined by : 
-\begin{equation}
-	w_{g}\equiv\frac{k}{\partial_{c}\mathbb{Re}\left[m\right]}\protect\underset{\beta\to0}{\sim}\mp\frac{km_{0}}{k^{2}+m_{0}^{2}}\left(c-\overline{u}\right)
+	\partial_{Z}\left(\frac{\phi_{0}^{2}\left(c-\overline{u}\right)^{2}}{m_{0}}\right)=o\left(\alpha\right).
 \end{equation}
 
+\subsection{Dispersion relation for $\alpha=0$ and $\mathrm{Re}<\infty$ :}
 
-\subsection{Case $\beta=0$ and $\mathrm{Re}<\infty$ :}
-
-We have 
+Without Newtonian cooling, the linear wave obeys the following dispersion relation locally : 
 \begin{equation}
-	\mathrm{Fr}^{2}\left(c-\overline{u}\right)^{2}\left(1-i\frac{\left(k^{2}+m^{2}\right)}{\mathrm{Re}k\left(c-\overline{u}\right)}\right)\left(k^{2}+m^{2}\right)=1.
+	\mathrm{Fr}^{2}\left(c-\overline{u}\right)^{2}\left(1-i\frac{\left(k^{2}+m^{2}\right)}{\mathrm{Re}k\left(c-\overline{u}\right)}\right)\left(k^{2}+m^{2}\right)=n^{2}.
 \end{equation}
 This an 4th\-- order equation. There is two branches for $m$. A propagative one and a boundary layer one. In the limit of $\mathrm{Re}\gg1$, we have :
-\begin{itemize}
-	\item if $k^{2}\left(c-\overline{u}\right)^{2}\mathrm{Fr}^{2}<1$:
-	\begin{align*}
-		m_{\mathrm{Prop}} 	& =\pm\left(\sqrt{\frac{1}{\left(c-\overline{u}\right)^{2}\mathrm{Fr^{2}}}-k^{2}}+\frac{i}{2k\left(c-\overline{u}\right)^{3}\mathrm{Fr}^{2}\mathrm{Re}\sqrt{\frac{1}{\left(c-\overline{u}\right)^{2}\mathrm{Fr}^{2}}-k^{2}}}\right)+o\left(\mathrm{Re}^{-1}\right)\\
-		m_{\mathrm{bl}} 	& =\pm\left(1-\mathrm{sign}\left(k\right)i\right)\sqrt{\frac{\left|c-\overline{u}\right|\left|k\right|\mathrm{Re}}{2}}+o\left(\sqrt{\mathrm{Re}}\right)
-	\end{align*}
-	\begin{align*}
-		m_{\mathrm{Prop}}^{2} 	& =\frac{1}{\left(c-\overline{u}\right)^{2}\mathrm{Fr}^{2}}-k^{2}+\frac{i}{\left(c-\overline{u}\right)^{5}\mathrm{Fr}^{4}k\mathrm{Re}}+o\left(\mathrm{Re}^{-1}\right)\\
-		m_{\mathrm{bl}}^{2} 	& =-i\left(c-\overline{u}\right)k\mathrm{Re}+o\left(\mathrm{Re}\right)
-	\end{align*}
-	Then for $m_{\mathrm{Prop}}$, we have at leading order in $\mathrm{Re}$:
-	\begin{equation}
-		\partial_{Z}\left(\frac{\phi_{0,\mathrm{Prop}}^{2}\left(c-\overline{u}\right)^{2}}{\sqrt{\frac{1}{\left(c-\overline{u}\right)^{2}\mathrm{Fr}^{2}}-k^{2}}}\right)=0
-	\end{equation}
-	and for $m_{\mathrm{bl}}$, we have at leading order in $\mathrm{Re}$:
-	\begin{equation}
-		\partial_{Z}\left(\phi_{0,\mathrm{bl}}m_{\mathrm{bl}}\right)=0
-	\end{equation}
-	\item if $k^{2}\left(c-\overline{u}\right)^{2}\mathrm{Fr}^{2}>1$:
-	\begin{align*}
-		m_{\mathrm{Prop}} 	& =\pm\left(i\sqrt{k^{2}-\frac{1}{\left(c-\overline{u}\right)^{2}\mathrm{Fr^{2}}}}+\frac{1}{2k\left(c-\overline{u}\right)^{3}\mathrm{Fr}^{2}\mathrm{Re}\sqrt{k^{2}-\frac{1}{\left(c-\overline{u}\right)^{2}\mathrm{Fr^{2}}}}}\right)+o\left(\mathrm{Re}^{-1}\right)\\
-		m_{\mathrm{bl}} 	& =\pm\left(1-\mathrm{sign}\left(k\left(c-\overline{u}\right)\right)i\right)\sqrt{\frac{\left|c-\overline{u}\right|\left|k\right|\mathrm{Re}}{2}}+o\left(\sqrt{\mathrm{Re}}\right)
-	\end{align*}
-	\begin{align*}
-		m_{\mathrm{Prop}}^{2}	& =\frac{1}{\left(c-\overline{u}\right)^{2}\mathrm{Fr}^{2}}-k^{2}+\frac{i}{\left(c-\overline{u}\right)^{5}\mathrm{Fr}^{4}k\mathrm{Re}}+o\left(\mathrm{Re}^{-1}\right)\\
-		m_{\mathrm{bl}}^{2} 	& =-i\left(c-\overline{u}\right)k\mathrm{Re}+o\left(\mathrm{Re}\right)
-	\end{align*}
-	Then for $m_{\mathrm{Prop}}$, we have at leading order in $\mathrm{Re}$:
-	\begin{equation}
-		\partial_{Z}\left(\frac{\phi_{0,\mathrm{Prop}}^{2}\left(c-\overline{u}\right)^{2}}{\sqrt{k^{2}-\frac{1}{\left(c-\overline{u}\right)^{2}\mathrm{Fr}^{2}}}}\right)=0
-	\end{equation}
-	and for $m_{\mathrm{bl}}$, we have at leading order in $\mathrm{Re}$:
-	\begin{equation}
-		\partial_{Z}\left(\phi_{0,\mathrm{bl}}m_{\mathrm{bl}}\right)=0
-	\end{equation}
-\end{itemize}
+\begin{align}
+	m_{\mathrm{Prop}} 	& =\pm\left(m_{0}+\frac{i n^{4}}{2k\left(c-\overline{u}\right)^{5}\mathrm{Fr}^{4}\mathrm{Re}m_{0}}\right)+o\left(\mathrm{Re}^{-1}\right),\\
+	m_{\mathrm{bl}} 	& =\pm\left(1-\mathrm{sign}\left(k\left(c-\overline{u}\right)\right)i\right)\sqrt{\frac{\left|c-\overline{u}\right|\left|k\right|\mathrm{Re}}{2}}+o\left(\sqrt{\mathrm{Re}}\right).
+\end{align}
+We assume that the waves are always non\--evanescent (i.e. $\left(c-\overline{u}\right)^2\mathrm{Fr}^2k^2<n^{2}$). $m_{\mathrm{Prop}}$ corresponds to the propagating branch. Its attenuation length scale is given by 
+\begin{equation}
+	L_{\mathrm{Re}}=\frac{2 k \left(c-\overline{u}\right)^5 \mathrm{Fr}^4\mathrm{Re}m_{0}}{n^{2}}.
+\end{equation}
+$m_{\mathrm{bl}}$ correspond to the boundary layer branch. The existence of this supplementary branch allows the matching of the propagative waves with the bottom boundary condition. The characteristic length of this boundary layer is given by :
+\begin{equation}
+	\delta_{\mathrm{Re}}=\sqrt{\frac{2}{\left|c-\overline{u}\right|\left|k\right|\mathrm{Re}}}.
+\end{equation}
+
+\begin{align}
+	m_{\mathrm{Prop}}^{2} 	& =\frac{1}{\left(c-\overline{u}\right)^{2}\mathrm{Fr}^{2}}-k^{2}+\frac{i}{\left(c-\overline{u}\right)^{5}\mathrm{Fr}^{4}k\mathrm{Re}}+o\left(\mathrm{Re}^{-1}\right)\\
+	m_{\mathrm{bl}}^{2} 	& =-i\left(c-\overline{u}\right)k\mathrm{Re}+o\left(\mathrm{Re}\right)
+\end{align}
+Then for $m_{\mathrm{Prop}}$, we have at leading order in $\mathrm{Re}$:
+\begin{equation}
+	\partial_{Z}\left(\frac{\phi_{0,\mathrm{Prop}}^{2}\left(c-\overline{u}\right)^{2}}{\sqrt{\frac{1}{\left(c-\overline{u}\right)^{2}\mathrm{Fr}^{2}}-k^{2}}}\right)=0
+\end{equation}
+and for $m_{\mathrm{bl}}$, we have at leading order in $\mathrm{Re}$:
+\begin{equation}
+	\partial_{Z}\left(\phi_{0,\mathrm{bl}}m_{\mathrm{bl}}\right)=0
+\end{equation}
+
 \bibliographystyle{plain}
 \bibliography{Bibliographie}
 
