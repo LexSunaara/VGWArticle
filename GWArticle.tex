@@ -14,7 +14,7 @@
 
 \section{Introduction}
 
-Internal gravity waves play a major role in geophysical fluid dynamics. The underlying reason of their increasing importance comes from their primary contribution to the mixing in the ocean (see \cite{Wunsch2005}) and in the redistribution of energy and momentum in the atmosphere (see \cite{Fritts1984}). 
+Internal gravity waves play a major role in geophysical fluid dynamics. The underlying reason of their increasing importance comes from their primary contribution to the mixing in the ocean (see \cite{Wunsch2004}) and in the redistribution of energy and momentum in the atmosphere (see \cite{Fritts1984}). 
 
 They have been extensively studied theoretically, numerically and experimentally. The well understood inviscid theory (see \cite{Bell1975,Muraschko2015}) is relevant to describe most of oceanic and atmospheric internal waves related phenomena. However, the large difference in spatial and time scaling between geophysical internal waves and there laboratory analogues makes it dodgy to ignore the viscous effects in the latter context. In numerical simulations with high enough resolution to capture the internal waves dynamics, the unresolved smaller scales are often parametrised by effective viscosities several order of magnitude higher than the actual geophysical ones (\textbf{REF ?}). The theory of the quasi\--biennial oscillation occurring in the equatorial stratosphere needs a dissipative process to attenuate the waves beams coming from tropical troposphere (see \cite{Lindzen1968,Plumb1977}). In the atmospheric context, this dissipation comes mainly from the Newtonian cooling parametrised by a drag force in the buoyancy equation (see e.g. \cite{Grisouard2012}). However, in the laboratory analogue performed by \cite{Plumb1978} the dominant dissipation process comes from the viscosity. The main difference between these two features is that the latter one involves viscous boundary layers to match the propagating waves with the boundary condition at level of the waves generator. At a quasi\--linear level those boundary layers can involve an important streaming close to the generator.
 
@@ -107,7 +107,24 @@ If $\mathrm{Re}<\infty$, we will either consider a no\--slip or a free\--slip bo
 	the first equation is the impermeability condition, the second one is the condition of vanishing tangential constraint.
 \end{itemize}
 
-\section{Zonally symmetric wave\--mean flow interaction}
+We consider the limit of a small topographic aspect ratio (i.e. $\epsilon\ll1$). In this limit we can consider the bottom boundary to be asymptotically flat. The bottom boundary condition is expressed at $z=0$ in terms of a series of $\epsilon$. At leading order in $\epsilon$ in writes:
+\begin{itemize}
+	\item Inviscid impermeability condition
+	\begin{equation}
+		w-w_{h_{b}}+\epsilon\left(h_{b}\partial_{z}w-(u-u_{h_{b}}\right)\partial_{x}h_{b})=o\left(\epsilon\right)\label{eq:BC_1}
+	\end{equation}
+	\item Viscous boundary conditions :\\
+	\textbf{Free-slip}
+	\begin{equation}
+		\partial_{z}u+\partial_{x}w+\epsilon\left(h_{b}\left(\partial_{zz}u+\partial_{xz}w \right)-2\partial_{x}h_{b}\left(\partial_{x}u-\partial_{z}w\right)\right)=o\left(\epsilon\right)\label{eq:BC_2}
+	\end{equation} \\
+	\textbf{No-slip}
+	\begin{equation}
+		\left(u,w\right)-\left(u_{h_{b}},w_{h_{b}}\right)+\epsilon h_{b}\left(\partial_{z}u,\partial_{z}w\right)=o\left(\epsilon\right)\label{eq:BC_3}
+	\end{equation}
+\end{itemize}
+
+\section{Zonally symmetric wave\--mean flow interaction \label{sec:Zonally}}
 
 Let us introduce the zonal average operator:
 \begin{equation}
@@ -134,26 +151,9 @@ The important term is the Reynold stress $\partial_{z}\overline{u'w'}$. The wave
 \end{equation}
 where $\mathcal{B}\left(\mathbf{u}',\phi'\right)=u'\partial_{x}\phi'+w'\partial_{z}\phi'-\overline{u'\partial_{x}\phi'+w'\partial_{z}\phi}$ is a bilinear operator with zero zonal average.
 
-In principle, we perform the same flow decomposition at the boundaries in order to get the boundary condition for the wave and the mean part. The resulting equations are messy in general but there expressions are greatly simplified in a far-field approximation when the domain geometry is asymptotically flat in the limit $\epsilon\ll1$. 
+We perform the same flow decomposition at the boundaries in order to get the boundary condition for the wave and the mean part. The results are messy in general but there expressions are greatly simplified in a far-field approximation when the domain geometry is asymptotically flat in the limit $\epsilon\ll1$. 
 
 \section{Internal gravity waves within a weakly sheared mean-flow}
-
-We consider here a single topographic mode $k=\pm1$ and a single phase speed $c=\pm1$. We consider the limit a small topographic aspect ratio (i.e. $\epsilon\ll1$). In this limit we can consider an asymptotically square domain with a bottom boundary condition expressed at $z=0$ in terms of a series of power of $\epsilon$:
-\begin{itemize}
-	\item Inviscid impermeability condition
-	\begin{equation}
-		w-w_{h_{b}}+\epsilon\left(h_{b}\partial_{z}w-(u-u_{h_{b}}\right)\partial_{x}h_{b})=o\left(\epsilon\right)
-	\end{equation}
-	\item Viscous boundary conditions :\\
-	\textbf{Free-slip}
-	\begin{equation}
-		\partial_{z}u+\partial_{x}w+\epsilon\left(h_{b}\left(\partial_{zz}u+\partial_{xz}w \right)-2\partial_{x}h_{b}\left(\partial_{x}u-\partial_{z}w\right)\right)=o\left(\epsilon\right)
-	\end{equation} \\
-	\textbf{No-slip}
-	\begin{equation}
-		\left(u,w\right)-\left(u_{h_{b}},w_{h_{b}}\right)+\epsilon h_{b}\left(\partial_{z}u,\partial_{z}w\right)=o\left(\epsilon\right)
-	\end{equation}
-\end{itemize}
 
 Let us introduce a small parameter $\epsilon^{2}\ll a\ll1$. We will see later how it scales with $\epsilon$. Let us introduce a slow variable $Z=az$. We now assume that the mean flow $\overline{u}$ depends only on $Z$ in Eq. (\ref{eq:GlobalFluct}), we assume the same for $n$. For the wave field, this means that the mean flow appears weakly sheared and frozen in time. We will see later under which condition this hypothesis holds.
 
@@ -173,7 +173,7 @@ Let us introduce the WKB expansion of a stationary solution of the wave equation
 		\tilde{b}{}_{j}\left(Z\right)\\
 		\tilde{p}_{j}\left(Z\right)
 	\end{array}
-	\right]\exp\left(ik\left(ct-x\right)-\frac{i\Phi\left(Z\right)}{a}\right)\right\} .
+	\right]\exp\left(ik\left(ct-x\right)-\frac{i\Phi\left(Z\right)}{a}\right)\right\} \label{eq:WKB_Exp}.
 \end{equation}
 The wave amplitude is scaling with the bottom boundary aspect ratio $\epsilon$. $\Phi\left(Z\right)$ is the phase of the wave. Injecting this expansion into the previous equation and collecting the leading order in $a$ and $\epsilon$ leads :
 \begin{equation}
@@ -278,18 +278,18 @@ is the positive inviscid solution for a purely propagating unattenuated wave. We
 
 The definition of the vertical group velocity of an inviscid wave is naturally defined by $w_{g}=-k/\partial_{c}m_{0}$. We extend this definition to attenuated waves : 
 \begin{equation}
-	w_{g}\equiv\frac{k}{\partial_{c}\mathbb{Re}\left[m\right]}.
+	w_{g}\equiv\frac{k}{\partial_{c}\mathbb{Re}\left[m\right]}.\label{eq:GrpVel}
 \end{equation}
 In the limit $\alpha\ll1$, it leads to the inviscid group velocity : 
 \begin{equation}
-w_{g}=\mp\frac{km_{0}}{k^{2}+m_{0}^{2}}\left(c-\overline{u}\right)+o\left(\alpha\right).
+\left|w_{g}\right|=\frac{\left|k\right|m_{0}}{k^{2}+m_{0}^{2}}\left|c-\overline{u}\right|.
 \end{equation}
 The expression of the group velocity will be useful later to compare the time scale of evolution of the mean flow with the time scale of the propagation of the wave.
 
 We can now consider back the equation for amplitude of the wave (\ref{eq:AmpEQGEN}) in the limit $\alpha\ll1$. It simplifies into :
 
 \begin{equation}
-	\partial_{Z}\left(\frac{\phi_{0}^{2}\left(c-\overline{u}\right)^{2}}{m_{0}}\right)=o\left(\alpha\right).
+	\partial_{Z}\left(\frac{\phi_{0}^{2}\left(c-\overline{u}\right)^{2}}{m_{0}}\right)=0.
 \end{equation}
 
 \subsection{Dispersion relation for $\alpha=0$ and $\mathrm{Re}<\infty$ :}
@@ -300,25 +300,72 @@ Without Newtonian cooling, the linear wave obeys the following dispersion relati
 \end{equation}
 This an 4th\-- order equation. There is two branches for $m$. A propagative one and a boundary layer one. In the limit of $\mathrm{Re}\gg1$, we have :
 \begin{align}
-	m_{\mathrm{Prop}} 	& =\pm\left(m_{0}+\frac{i n^{4}}{2k\left(c-\overline{u}\right)^{5}\mathrm{Fr}^{4}\mathrm{Re}m_{0}}\right)+o\left(\mathrm{Re}^{-1}\right),\\
-	m_{\mathrm{bl}} 	& =\pm\left(1-\mathrm{sign}\left(k\left(c-\overline{u}\right)\right)i\right)\sqrt{\frac{\left|c-\overline{u}\right|\left|k\right|\mathrm{Re}}{2}}+o\left(\sqrt{\mathrm{Re}}\right).
+	m_{\mathrm{w}} 	& =-\text{sign}\left(\left(c-\overline{u}\right)k \right)\left(m_{0}+\frac{i n^{4}}{2k\left(c-\overline{u}\right)^{5}\mathrm{Fr}^{4}\mathrm{Re}m_{0}}\right)+o\left(\mathrm{Re}^{-1}\right),\\
+	m_{\mathrm{bl}} 	& =\left(\text{sign}\left(\left(c-\overline{u}\right)k \right)-i\right)\sqrt{\frac{\left|c-\overline{u}\right|\left|k\right|\mathrm{Re}}{2}}+o\left(\sqrt{\mathrm{Re}}\right).
 \end{align}
-We assume that the waves are always non\--evanescent (i.e. $\left(c-\overline{u}\right)^2\mathrm{Fr}^2k^2<n^{2}$). $m_{\mathrm{Prop}}$ corresponds to the propagating branch. Its attenuation length scale is given by 
+We assume that the waves are always non\--evanescent (i.e. $\left(c-\overline{u}\right)^2\mathrm{Fr}^2k^2<n^{2}$). $m_{\mathrm{w}}$ corresponds to the propagating branch. Its attenuation length scale is given by 
 \begin{equation}
-	L_{\mathrm{Re}}=\frac{2 \left|k\right| \left|c-\overline{u}\right|^5 \mathrm{Fr}^4\mathrm{Re}m_{0}}{n^{2}}.
+	L_{\mathrm{Re}}=\frac{2 \left|k\right| \left|c-\overline{u}\right|^5 \mathrm{Fr}^4\mathrm{Re}m_{0}}{n^{4}}.
 \end{equation}
 $m_{\mathrm{bl}}$ correspond to the boundary layer branch. The existence of this supplementary branch allows the matching of the propagative waves with the bottom boundary condition. The characteristic length of this boundary layer is given by :
 \begin{equation}
 	\delta_{\mathrm{Re}}=\sqrt{\frac{2}{\left|c-\overline{u}\right|\left|k\right|\mathrm{Re}}}.
 \end{equation}
-Then for $m_{\mathrm{Prop}}$, we have at leading order in $\mathrm{Re}$:
+
+Using the definition of the group velocity in (\ref{eq:GrpVel}), we have at leading order in $\mathrm{Re}^{-1}$ :
+\begin{align}
+	\left|w_{g,\mathrm{w}}\right| 	& = \frac{\left|k\right|m_{0}}{k^{2}+m_{0}^{2}}\left|c-\overline{u}\right|\\
+	\left|w_{g,\mathrm{bl}}\right|   	& = \sqrt{\frac{8\left|c-\overline{u}\right|\left|k\right|}{\mathrm{Re}}}
+\end{align}
+
+We can now consider back the equation for amplitude of the wave (\ref{eq:AmpEQGEN}) in the limit $\mathrm{Re}\gg1$. For $m_{\mathrm{w}}$, we have at leading order in $\mathrm{Re}^{-1}$:
 \begin{equation}
-	\partial_{Z}\left(\frac{\phi_{0,\mathrm{Prop}}^{2}\left(c-\overline{u}\right)^{2}}{m_{0}}\right)=0
+	\partial_{Z}\left(\frac{\phi_{0,\mathrm{w}}^{2}\left(c-\overline{u}\right)^{2}}{m_{0}}\right)=0
 \end{equation}
-and for $m_{\mathrm{bl}}$, we have at leading order in $\mathrm{Re}$:
+and for $m_{\mathrm{bl}}$, we have at leading order in $\mathrm{Re}^{-1}$:
 \begin{equation}
-	\partial_{Z}\left(\phi_{0,\mathrm{bl}}m_{\mathrm{bl}}\right)=0
+	\partial_{Z}\left(\phi_{0,\mathrm{bl}}^{2}\left(c-\overline{u}\right)^{7/2}\right)=0
 \end{equation}
+
+\section{Generation by a moving boundary and Reynold stress}
+
+\subsection{Boundary motion and boundary condition}
+
+In this subsection, we apply the boundary condition at the bottom interface to compute the amplitude at the level of the bottom asymptotically flat boundary. We inject the WKB expansion (\ref{eq:WKB_Exp}) into the boundary conditions (\ref{eq:BC_1}-\ref{eq:BC_3})  and perform the wave and mean\--flow decomposition in section in section \ref{sec:Zonally} in order to get the bottom boundary conditions for the mean\--flow $\overline{u}$ and the slowly varying amplitudes of the leading order wave field. Wee need to consider the complete solution for the wave field, including both the propagating part and the boundary layer part ignoring the non\--physical divergent contributions. We consider a single propagative mode for the bottom boundary: $h_{b}\left(x,t\right)=\mathbb{R}\mathrm{e}\left[e^{i\left(ct-kx\right)}\right]$. We also need to assume how the bottom boundary velocity. We will consider two case here: either the bottom boundary is a fixed sine shape translating horizontally and $\mathbf{u}_{h_{b}}=c\mathbf{e}_{x}$ , either the bottom boundary is oscillating and then $\mathbf{u}_{h_{b}}=\partial_{t}h_{b}\,\mathbf{e}_{z}$ .
+
+\subsubsection{Case of a translating boundary}
+In this case, we consider only the free\--slip boundary condition. With a no\--slip boundary condition, the main effect of the bottom boundary would be the emergence of a strong viscous boundary layer for the shear mean\--flow. In the limit of asymptotically flat bottom boundary, it will not take long for viscous layer to be larger than the bottom boundary amplitude. After that internal gravity waves can no longer be emitted and all the theory introduced in this paper is obsolete. We are interested in the free-slip boundary condition in order to analyze high resolution internal gravity waves numerical simulations using large effective viscosities.
+\begin{align}
+	\partial_{Z}\overline{u} & 	= 	0 																				 		\\
+	\phi_{0,\mathrm{w}}      &  = 	im_{\mathrm{w}}\frac{k^2-m_{\mathrm{bl}}^{2}}{m_{\mathrm{w}}^{2}-m_{\mathrm{bl}}^{2}} 	\\
+	\phi_{0,\mathrm{bl}}     &  =	im_{\mathrm{bl}}\frac{k^2-m_{\mathrm{w}}^{2}}{m_{\mathrm{bl}}^{2}-m_{\mathrm{w}}^{2}}   
+\end{align}
+
+\textbf{High Reynolds limit}
+In the limit of $\mathrm{Re}\gg1$, we have 
+\begin{align}																			 		\\
+	\phi_{0,\mathrm{w}}      &  = 	-\text{sign}\left(\left(c-\overline{u}\right)k\right)\left(im_{0}+\frac{k^{4}+3m_{0}^{4}}{2\left(c-\overline{u}\right)km_{0}\mathrm{Re}}\right)	\\
+	\phi_{0,\mathrm{bl}}     &  =	\left(1-i\right)\frac{m_{0}^{2}-k^{2}}{\sqrt{\left|c-\overline{u}\right|\left|k\right|\mathrm{Re}}}
+\end{align}
+
+\subsection{Case of a oscillating boundary}
+In this case, we consider only the no\--slip boundary condition. This case is considered only to compare with experimental set\--up where the boundary condition is no\--slip.
+\begin{align}
+	\overline{u} 			&  = 	0 																						\\
+	\phi_{0,\mathrm{w}} 	&  = 	ic\frac{m_{\mathrm{w}}m_{\mathrm{bl}}}{m_{\mathrm{bl}}-m_{\mathrm{w}}} 					\\
+	\phi_{0,\mathrm{bl}} 	&  = 	ic\frac{m_{\mathrm{w}}m_{\mathrm{bl}}}{m_{\mathrm{w}}-m_{\mathrm{bl}}} 		
+\end{align}
+
+\textbf{High Reynolds limit}
+In the limit of $\mathrm{Re}\gg1$, we have 
+\begin{align}																			 		\\
+	\phi_{0,\mathrm{w}}      &  = 	-icm_{0}-\left(1-i\right)m_{0}^{2}\sqrt{\frac{\left|c\right|}{2\left|k\right|\mathrm{Re}}}+\frac{k^{4}+2m_{0}^{2}k^{2}+3 m_{0}^{2}}{2km_{0}\mathrm{Re}} 	\\
+	\phi_{0,\mathrm{bl}}     &  =	icm_{0}+\left(1-i\right)m_{0}^{2}\sqrt{\frac{\left|c\right|}{2\left|k\right|\mathrm{Re}}}-\frac{k^{4}+2m_{0}^{2}k^{2}+3 m_{0}^{2}}{2km_{0}\mathrm{Re}} 
+\end{align}
+
+\subsection{Computation of the Reynold stress}
+
+
 
 \bibliographystyle{plain}
 \bibliography{Bibliographie}
