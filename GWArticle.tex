@@ -324,7 +324,7 @@ We can now consider back the equation for amplitude of the wave (\ref{eq:AmpEQGE
 \end{equation}
 and for $m_{\mathrm{bl}}$, we have at leading order in $\mathrm{Re}^{-1}$:
 \begin{equation}
-	\partial_{Z}\left(\phi_{0,\mathrm{bl}}^{2}\left(c-\overline{u}\right)^{7/2}\right)=0
+	\partial_{Z}\left(\phi_{0,\mathrm{bl}}^{2}\left|c-\overline{u}\right|^{7/2}\right)=0
 \end{equation}
 
 \section{Generation by a moving boundary and Reynold stress}
@@ -344,8 +344,8 @@ In this case, we consider only the free\--slip boundary condition. With a no\--s
 \textbf{High Reynolds limit}
 In the limit of $\mathrm{Re}\gg1$, we have 
 \begin{align}																			 		\\
-	\phi_{0,\mathrm{w}}      &  = 	-\text{sign}\left(\left(c-\overline{u}\right)k\right)\left(im_{0}+\frac{k^{4}+3m_{0}^{4}}{2\left(c-\overline{u}\right)km_{0}\mathrm{Re}}\right)	\\
-	\phi_{0,\mathrm{bl}}     &  =	\left(1-i\right)\frac{m_{0}^{2}-k^{2}}{\sqrt{\left|c-\overline{u}\right|\left|k\right|\mathrm{Re}}}
+	\phi_{0,\mathrm{w}}      &  = 	-\text{sign}\left(\left(c-\overline{u}\right)k\right)\left(im_{0}+\frac{k^{4}+3m_{0}^{4}}{2\left(c-\overline{u}\right)km_{0}\mathrm{Re}}\right) +o\left(\mathrm{Re}\right)	\\
+	\phi_{0,\mathrm{bl}}     &  =	\left(1-\text{sign}\left(\left(c-\overline{u}\right)k\right)i\right)\frac{m_{0}^{2}-k^{2}}{\sqrt{\left|c-\overline{u}\right|\left|k\right|\mathrm{Re}}}
 \end{align}
 
 \subsection{Case of a oscillating boundary}
@@ -359,11 +359,41 @@ In this case, we consider only the no\--slip boundary condition. This case is co
 \textbf{High Reynolds limit}
 In the limit of $\mathrm{Re}\gg1$, we have 
 \begin{align}																			 		\\
-	\phi_{0,\mathrm{w}}      &  = 	-icm_{0}-\left(1-i\right)m_{0}^{2}\sqrt{\frac{\left|c\right|}{2\left|k\right|\mathrm{Re}}}+\frac{k^{4}+2m_{0}^{2}k^{2}+3 m_{0}^{2}}{2km_{0}\mathrm{Re}} 	\\
-	\phi_{0,\mathrm{bl}}     &  =	icm_{0}+\left(1-i\right)m_{0}^{2}\sqrt{\frac{\left|c\right|}{2\left|k\right|\mathrm{Re}}}-\frac{k^{4}+2m_{0}^{2}k^{2}+3 m_{0}^{2}}{2km_{0}\mathrm{Re}} 
+	\phi_{0,\mathrm{w}}      &  = 	-\text{sign}\left(\left(c-\overline{u}\right)k\right)\left(icm_{0}-\frac{k^{4}+2m_{0}^{2}k^{2}+3 m_{0}^{2}}{2km_{0}\mathrm{Re}} \right)-\left(\text{sign}\left(\left(c-\overline{u}\right)k\right)-i\right)m_{0}^{2}\sqrt{\frac{\left|c\right|}{2\left|k\right|\mathrm{Re}}}	\\
+	\phi_{0,\mathrm{bl}}     &  =	\text{sign}\left(\left(c-\overline{u}\right)k\right)\left(icm_{0}-\frac{k^{4}+2m_{0}^{2}k^{2}+3 m_{0}^{2}}{2km_{0}\mathrm{Re}} \right)+\left(\text{sign}\left(\left(c-\overline{u}\right)k\right)-i\right)m_{0}^{2}\sqrt{\frac{\left|c\right|}{2\left|k\right|\mathrm{Re}}}	
 \end{align}
 
 \subsection{Computation of the Reynold stress}
+\begin{align}
+	\overline{u'w'}&=&	-\frac{\left(c-\overline{u}\right)^{2}k}{2}
+						\mathbb{R}\mathrm{e}\left[\left(\frac{\phi_{0,\mathrm{w}}}{m_{\mathrm{w}}}e^{i\phi_{\mathrm{w}}}+\frac{\phi_{0,\mathrm{bl}}}{m_{\mathrm{bl}}}e^{i\varphi_{\mathrm{bl}}}\right)
+						\left(\phi_{0,\mathrm{w}}^{*}e^{-i\varphi_{\mathrm{w}}^{*}}+\phi_{0,\mathrm{bl}}^{*}e^{-i\varphi_{\mathrm{bl}}^{*}}\right)\right]\\
+	\overline{u'w'}&=& 	-\frac{\left(c-\overline{u}\right)^{2}k}{2}\left(
+						\left|\frac{\phi_{0,\mathrm{w}}}{m_{\mathrm{w}}}\right|^{2}\mathbb{R}\mathrm{e}\left[m_{\mathrm{w}}\right]e^{-2\mathbb{I}\mathrm{m}\left[\varphi_{\mathrm{w}}\right]}
+						+\left|\frac{\phi_{0,\mathrm{bl}}}{m_{\mathrm{bl}}}\right|^{2}\mathbb{R}\mathrm{e}\left[m_{\mathrm{bl}}\right]e^{-2\mathbb{I}\mathrm{m}\left[\varphi_{\mathrm{bl}}\right]}+\cdots\right.\\
+				   & &	\left.+\mathbb{R}\mathrm{e}\left[\frac{\phi_{0,\mathrm{w}}^{*}\phi_{0,\mathrm{bl}}}{m_{\mathrm{w}}^{*}m_{\mathrm{bl}}}\left(m_{\mathrm{w}}^{*}+m_{\mathrm{bl}}\right)\right]
+						\mathbb{R}\mathrm{e}\left[e^{i\left(\varphi_{\mathrm{bl}}-\varphi_{\mathrm{w}}^{*}\right)} \right] 
+	                	-\mathbb{I}\mathrm{m}\left[\frac{\phi_{0,\mathrm{w}}^{*}\phi_{0,\mathrm{bl}}}{m_{\mathrm{w}}^{*}m_{\mathrm{bl}}}\left(m_{\mathrm{w}}^{*}+m_{\mathrm{bl}}\right)\right]
+						\mathbb{I}\mathrm{m}\left[e^{i\left(\varphi_{\mathrm{bl}}-\varphi_{\mathrm{w}}^{*}\right)} \right] \right)
+\end{align}
+\subsubsection{Case of a translating boundary}
+
+\begin{align}
+	\overline{u'w'}&=& -\frac{\left(c-\overline{u}\right)^{2}k}{2\left|m_{\mathrm{bl}}^{2}-m_{\mathrm{w}}^{2}\right|^{2}}\left(
+						\frac{m_{0}\left(Z\right)}{m_{0}}\left|k^2-m_{\mathrm{bl}}^{2}\right|^{2}\mathbb{R}\mathrm{e}\left[m_{\mathrm{w}}\right]e^{-2\mathbb{I}\mathrm{m}\left[\varphi_{\mathrm{w}}\right]}
+						+\left(\frac{\left|c-\overline{u}\left(Z\right)\right|}{\left|c-\overline{u}\right|}\right)^{3/2}\left|k^{2}-m_{\mathrm{w}}^{2} \right|^{2}\mathbb{R}\mathrm{e}\left[m_{\mathrm{bl}}\right]e^{-2\mathbb{I}\mathrm{m}\left[\varphi_{\mathrm{bl}}\right]}+\cdots\right.\\
+				   & &	-\mathbb{R}\mathrm{e}\left[\left(k^{2}-m_{\mathrm{bl}}^{*2}\right)\left(k^{2}-m_{\mathrm{w}}^{2}\right)\left(m_{\mathrm{w}}^{*}+m_{\mathrm{bl}}\right)\right]
+						\mathbb{R}\mathrm{e}\left[e^{i\left(\varphi_{\mathrm{bl}}-\varphi_{\mathrm{w}}^{*}\right)} \right]\\
+				   & & 	\left.+\mathbb{I}\mathrm{m}\left[\left(k^{2}-m_{\mathrm{bl}}^{*2}\right)\left(k^{2}-m_{\mathrm{w}}^{2}\right)
+				   		\left(m_{\mathrm{w}}^{*}+m_{\mathrm{bl}}\right)\right]
+						\mathbb{I}\mathrm{m}\left[e^{i\left(\varphi_{\mathrm{bl}}-\varphi_{\mathrm{w}}^{*}\right)} \right] \right)
+\end{align}
+
+In the limit of large Reynold number, $\mathrm{Re}\gg1$, we have 
+
+
+
+
 
 
 
